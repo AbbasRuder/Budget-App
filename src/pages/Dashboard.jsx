@@ -1,7 +1,7 @@
-// react-router-dom
+// - react-router-dom
 import { useLoaderData } from "react-router-dom"
 
-// helpers
+// - helpers
 import { fetchData } from "../helpers/localStorage"
 
 
@@ -14,6 +14,6 @@ export default function Dashboard() {
     const { username }  = useLoaderData()
     
   return (
-    <div>Hello {username}</div>
+    <div>Dashboard {username}</div>
   )
 }
