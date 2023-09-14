@@ -15,6 +15,7 @@ import Error from './pages/Error.jsx';
 
 // - actions
 import { logoutAction } from "./actions/logoutAction.js";
+import { createUser } from './actions/createUser.js';
 
 
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "logout",
         action: logoutAction
+      },
+      {
+        path: "create-user",
+        action: createUser
       }
     ]
   },

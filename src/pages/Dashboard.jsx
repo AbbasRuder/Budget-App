@@ -4,16 +4,23 @@ import { useLoaderData } from "react-router-dom"
 // - helpers
 import { fetchData } from "../helpers/localStorage"
 
+// - components
+import Intro from "../components/Intro"
+
 
 export const dashboardLoader = () => {
-    const username = fetchData("username")
-    return { username }
+  const username = fetchData("username")
+  return { username }
 }
 
+
 export default function Dashboard() {
-    const { username }  = useLoaderData()
-    
+  // - receive data from the loader
+  const { username } = useLoaderData()
+
   return (
-    <div>Dashboard {username}</div>
+    <>
+      {username ? <p>{ username }</p> : <Intro />}
+    </>
   )
 }
