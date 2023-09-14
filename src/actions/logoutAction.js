@@ -2,6 +2,9 @@
 import { redirect } from "react-router-dom"
 // - helpers
 import { deleteData } from "../helpers/localStorage"
+// - library
+import { toast } from "react-toastify"
+
 
 export const logoutAction = async () => {
 
@@ -9,6 +12,8 @@ export const logoutAction = async () => {
     deleteData({
         key: "username"
     })
+   
+    toast.success("You have deleted your account!")
 
     return redirect("/")
 }

@@ -1,3 +1,7 @@
+// - library
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // - react-router-dom
 import {
   createBrowserRouter,
@@ -41,6 +45,7 @@ function App() {
     <>
       <div className="App">
         <RouterProvider router={router} />
+        <ToastContainer />
       </div>
     </>
   )

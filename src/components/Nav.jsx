@@ -12,7 +12,8 @@ export default function Nav({username}) {
     <>
         <nav>
             <NavLink
-                to="/">
+                to="/"
+            >
                 <img src={Logomark} alt="" />
                 <span>HomeBudget</span>
             </NavLink>
