@@ -1,8 +1,8 @@
-
+// - rrd
 import { Form } from 'react-router-dom'
-
+// -library
 import {UserPlusIcon} from '@heroicons/react/24/solid'
-
+// - assets
 import illustration from "../assets/illustration.jpg"
 
 export default function Intro() {

@@ -1,4 +1,3 @@
-import { generatePath } from "react-router-dom"
 
 // - to fetch data from local storage
 export const fetchData = (key) => {
@@ -28,4 +27,18 @@ export const createBudget = ({  name, amount }) => {
 
     const existingBudget = fetchData("budgets") ?? []
     return localStorage.setItem("budgets", JSON.stringify([...existingBudget, newItem]))
+}
+
+// - to create new expenses
+export const createExpense = ({  name, amount, budgetId }) => {
+    const newItem = {
+        id: crypto.randomUUID(),
+        name: name,
+        amount: Number(amount),
+        createdAt: Date.now(),
+        budgetId: budgetId
+    }
+
+    const existingExpense = fetchData("expenses") ?? []
+    return localStorage.setItem("expenses", JSON.stringify([...existingExpense, newItem]))
 }
