@@ -21,11 +21,15 @@ export const dashboardLoader = () => {
 export const dashboardAction = async ({request}) => {
   const data = await request.formData()
   const formData = Object.fromEntries(data)
-  createBudget({
-    name: formData.newBudget,
-    amount: formData.newBudgetAmount
-  })
-  return toast.success("Budget created")
+  try {
+    createBudget({
+      name: formData.newBudget,
+      amount: formData.newBudgetAmount
+    })
+    return toast.success("Budget created")
+  } catch (error) {
+    throw new Error("There was some problem while creating your budget")
+  }
 }
 
 

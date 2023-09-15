@@ -1,16 +1,30 @@
 import { CurrencyRupeeIcon } from '@heroicons/react/24/solid'
-import React from 'react'
-import { Form } from 'react-router-dom'
+import React, { useEffect, useReducer, useRef } from 'react'
+import { Form, useFetcher } from 'react-router-dom'
 
 export default function AddBudgetForm() {
+
+    const fetcher = useFetcher()
+    const isSubmitting = fetcher.state === "submitting"
+    
+    const formRef = useRef()
+
+    useEffect(() => {
+        // - to clear out the form after submitting
+        if(!isSubmitting) {
+            formRef.current.reset()
+        }
+    }, [isSubmitting])
+
     return (
         <div className="form-wrapper">
             <h2 className="h3">
                 Create Budget
             </h2>
-            <Form
+            <fetcher.Form
                 method='post'
                 className='grid-sm'
+                ref={formRef}
             >
                 <div className="grid-xs">
                     <label htmlFor="newBudget">Budget Name</label>
@@ -38,7 +52,7 @@ export default function AddBudgetForm() {
                     <span>Create Budget</span>
                     <CurrencyRupeeIcon width={20} />
                 </button>
-            </Form>
+            </fetcher.Form>
         </div>
     )
 }
