@@ -2,7 +2,7 @@
 import { Outlet, useLoaderData } from "react-router-dom"
 
 // - helpers
-import { fetchData } from "../helpers/localStorage"
+import { fetchData } from "../helpers/helpers"
 
 // - assets
 import wave from "../assets/wave.svg"

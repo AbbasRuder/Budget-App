@@ -8,7 +8,7 @@ export async function createUser({ request }) {
     const data = await request.formData()
     const formData = Object.fromEntries(data)
     try {
-        localStorage.setItem("username", formData.username)
+        localStorage.setItem("username", JSON.stringify(formData.username))
         toast.success(`Welcome ${formData.username}`)
     } catch (error) {
         throw new Error("There was a problem creating your account")

@@ -10,7 +10,7 @@ import {
 
 // - routes
 import Main, { mainLoader } from './layouts/Main.jsx';
-import Dashboard, { dashboardLoader } from './pages/dashboard.jsx';
+import Dashboard, { dashboardAction, dashboardLoader } from './pages/dashboard.jsx';
 import Error from './pages/Error.jsx';
 
 // - actions
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Dashboard />,
         loader: dashboardLoader,
+        action: dashboardAction,
         errorElement: <Error />
       },
       {

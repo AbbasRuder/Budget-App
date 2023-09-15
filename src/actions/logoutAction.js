@@ -1,7 +1,7 @@
 // - rrd
 import { redirect } from "react-router-dom"
 // - helpers
-import { deleteData } from "../helpers/localStorage"
+import { deleteData } from "../helpers/helpers"
 // - library
 import { toast } from "react-toastify"
 

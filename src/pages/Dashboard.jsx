@@ -1,8 +1,11 @@
 // - react-router-dom
 import { useLoaderData } from "react-router-dom"
 
+// -library
+import { toast } from "react-toastify"
+
 // - helpers
-import { fetchData } from "../helpers/localStorage"
+import { createBudget, fetchData } from "../helpers/helpers"
 
 // - components
 import Intro from "../components/Intro"
@@ -11,8 +14,18 @@ import AddBudgetForm from "../components/AddBudgetForm"
 
 export const dashboardLoader = () => {
   const username = fetchData("username")
-  const budget = fetchData("budget")
+  const budget = fetchData("budgets")
   return { username, budget }
+}
+
+export const dashboardAction = async ({request}) => {
+  const data = await request.formData()
+  const formData = Object.fromEntries(data)
+  createBudget({
+    name: formData.newBudget,
+    amount: formData.newBudgetAmount
+  })
+  return toast.success("Budget created")
 }
 
 
