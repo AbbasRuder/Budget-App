@@ -42,3 +42,38 @@ export const createExpense = ({  name, amount, budgetId }) => {
     const existingExpense = fetchData("expenses") ?? []
     return localStorage.setItem("expenses", JSON.stringify([...existingExpense, newItem]))
 }
+
+
+
+// - Calculating total amount spent from the budget
+export const getTotalSpentFromBudget = (budgetId) => {
+    const expenses = fetchData("expenses") ?? []
+    const totalSpent = expenses.reduce((acc, expenseItem) => {
+        // - checking if the expense matches the budget
+        if(expenseItem.budgetId === budgetId){
+            // - calculating total expenses
+            return acc + expenseItem.amount
+        }
+        return acc
+    }, 0)
+    return totalSpent
+}
+
+
+// ------ Formatting -------
+
+// - format currency
+export const formatCurrency = (amount) => {
+    return amount.toLocaleString(undefined, {
+        style: "currency",
+        currency: "INR"
+    })
+}
+
+// - format percentage
+export const formatPercentage = (amount) => {
+    return amount.toLocaleString(undefined, {
+        style: 'percent',
+        minimumFractionDigits: 0
+    })
+}
