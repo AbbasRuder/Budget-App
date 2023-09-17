@@ -1,5 +1,5 @@
 // - react-router-dom
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 
 // -library
 import { toast } from "react-toastify"
@@ -72,14 +72,30 @@ export default function Dashboard() {
                   <h2>Existing Budgets</h2>
                   <div className="budgets">
                     {budgets.map((mapItem) => (
-                      <BudgetItem key={mapItem.id} budgets={mapItem}/>
+                      <BudgetItem key={mapItem.id} budgets={mapItem} />
                     ))}
                   </div>
                   {
                     expenses && expenses.length > 0 && (
                       <div className="grid-md">
                         <h2>Recent Expense</h2>
-                        <Table expenses={expenses}/>
+                        <Table
+                          expenses={expenses
+                            .sort((a, b) => b.createdAt - a.createdAt)
+                            // - only showing the top eight expenses
+                            .slice(0, 8)}
+                        />
+                        {
+                          expenses.length > 8 && (
+                            <Link
+                              to="/expenses"
+                              className="btn btn--dark"
+                            >
+                              View all expenses
+                            </Link>
+                          )
+                        }
+
                       </div>
                     )
                   }
