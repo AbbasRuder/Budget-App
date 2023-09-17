@@ -12,12 +12,14 @@ import Intro from "../components/Intro"
 import AddBudgetForm from "../components/AddBudgetForm"
 import AddExpenseForm from "../components/AddExpenseForm"
 import BudgetItem from "../components/BudgetItem"
+import Table from "../components/Table"
 
 
 export const dashboardLoader = () => {
   const username = fetchData("username")
   const budgets = fetchData("budgets")
-  return { username, budgets }
+  const expenses = fetchData("expenses")
+  return { username, budgets, expenses }
 }
 
 export const dashboardAction = async ({ request }) => {
@@ -52,8 +54,8 @@ export const dashboardAction = async ({ request }) => {
 
 
 export default function Dashboard() {
-  // - receive data from the loader
-  const { username, budgets } = useLoaderData()
+  // - receive data from the loader function ('dashboardLoader')
+  const { username, budgets, expenses } = useLoaderData()
   return (
     <>
       {username ? (
@@ -73,6 +75,14 @@ export default function Dashboard() {
                       <BudgetItem key={mapItem.id} budgets={mapItem}/>
                     ))}
                   </div>
+                  {
+                    expenses && expenses.length > 0 && (
+                      <div className="grid-md">
+                        <h2>Recent Expense</h2>
+                        <Table expenses={expenses}/>
+                      </div>
+                    )
+                  }
                 </div>
               ) : (
                 <div className="grid-lg">

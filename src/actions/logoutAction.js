@@ -12,6 +12,12 @@ export const logoutAction = async () => {
     deleteData({
         key: "username"
     })
+    deleteData({
+        key: "budgets"
+    })
+    deleteData({
+        key: "expenses"
+    })
    
     toast.success("You have deleted your account!")
 

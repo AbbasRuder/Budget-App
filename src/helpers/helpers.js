@@ -77,3 +77,8 @@ export const formatPercentage = (amount) => {
         minimumFractionDigits: 0
     })
 }
+
+// - format date
+export const formateDate = (createAt) => {
+    return new Date(createAt).toLocaleDateString()
+}
