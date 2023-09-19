@@ -12,9 +12,9 @@ import {
 import Main, { mainLoader } from './layouts/Main.jsx';
 import Dashboard, { dashboardAction, dashboardLoader } from './pages/dashboard.jsx';
 import Error from './pages/Error.jsx';
-import Expenses, { expensesLoader } from './pages/Expenses.jsx';
+import Expenses, { expensesAction, expensesLoader } from './pages/Expenses.jsx';
 
-// - actions
+// - only actions
 import { logoutAction } from "./actions/logoutAction.js";
 import { createUser } from './actions/createUser.js';
 
@@ -38,6 +38,7 @@ const router = createBrowserRouter([
         path: "expenses",
         element: <Expenses />,
         loader: expensesLoader,
+        action: expensesAction
       },
       {
         path: "logout",

@@ -1,12 +1,9 @@
 // - react-router-dom
 import { Link, useLoaderData } from "react-router-dom"
-
 // -library
 import { toast } from "react-toastify"
-
 // - helpers
-import { createBudget, createExpense, fetchData } from "../helpers/helpers"
-
+import { createBudget, createExpense, deleteData, fetchData } from "../helpers/helpers"
 // - components
 import Intro from "../components/Intro"
 import AddBudgetForm from "../components/AddBudgetForm"
@@ -15,6 +12,8 @@ import BudgetItem from "../components/BudgetItem"
 import Table from "../components/Table"
 
 
+
+// ---loader
 export const dashboardLoader = () => {
   const username = fetchData("username")
   const budgets = fetchData("budgets")
@@ -22,6 +21,7 @@ export const dashboardLoader = () => {
   return { username, budgets, expenses }
 }
 
+// ---actions
 export const dashboardAction = async ({ request }) => {
   const data = await request.formData()
   const { _action, ...values } = Object.fromEntries(data)
@@ -50,6 +50,19 @@ export const dashboardAction = async ({ request }) => {
       throw new Error("There was some problem while creating your Expenses")
     }
   }
+
+  if (_action === 'deleteExpense') {
+    try {
+      deleteData({
+        key: 'expenses',
+        id: values.expenseId
+      })
+      return toast.success("Expense deleted")
+    } catch (error) {
+      throw new Error("There was some problem while creating your Expenses")
+    }
+  }
+
 }
 
 
