@@ -80,7 +80,7 @@ export default function Budget() {
         <span className="accent">{budget.name}</span> Overview
       </h1>
       <div className="flex-lg">
-        <BudgetItem budgets={budget} />
+        <BudgetItem budgets={budget} showDelete={true}/>
         <AddExpenseForm budgets={[budget]} />
       </div>
       {
