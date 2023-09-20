@@ -2,15 +2,23 @@
 import ExpenseItem from "./ExpenseItem"
 
 
-export default function Table({ expenses }) {
+export default function Table({ expenses, showBudget = true }) {
     const sortedExpenses = expenses.sort((a, b) => b.createdAt - a.createdAt)
+
+    const tableHeaders = [
+        'Name', 
+        'Amount', 
+        'Date', 
+        showBudget ? 'Budgets' : '', 
+        ''
+    ]
     return (
         <div className="table">
             <table>
                 <thead>
                     <tr>
                         {
-                            ['Name', 'Amount', 'Date', 'Budgets', ''].map((item, index) => (
+                            tableHeaders.map((item, index) => (
                                 <th key={index}>{item}</th>
                             ))
                         }
@@ -20,7 +28,7 @@ export default function Table({ expenses }) {
                     {
                         sortedExpenses.map((expenseItem) => (
                             <tr key={expenseItem.id}>
-                                <ExpenseItem expense={expenseItem}/>
+                                <ExpenseItem expense={expenseItem} showBudget={showBudget}/>
                             </tr>
                         ))
                     }
