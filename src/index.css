@@ -43,6 +43,7 @@ svg {
   --space-md: 24px;
   --space-lg: 32px;
   --space-xl: 40px;
+  --space-2xl: 80px;
   --content-sm: 40ch;
   --content: 60ch;
   --round-sm: 4px;
@@ -288,7 +289,7 @@ p {
 main {
   max-width: 1500px;
   width: 100%;
-  padding: var(--space-md) var(--space-md) var(--space-xl);
+  padding: var(--space-md) var(--space-2xl) var(--space-xl) ;
   margin-inline: auto;
   display: -ms-grid;
   display: grid;
@@ -307,7 +308,7 @@ nav {
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  padding: var(--space-md);
+  padding: var(--space-md) var(--space-2xl);
   max-width: 1500px;
   margin-inline: auto;
 }

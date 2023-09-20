@@ -23,7 +23,7 @@ export default function ExpenseItem({ expense, showBudget }) {
             {showBudget && (
                 <td>
                     <Link
-                        to={`budgets/${budget.id}`}
+                        to={`/budgets/${budget.id}`}
                         style={{
                             '--accent': budget.color
                         }}

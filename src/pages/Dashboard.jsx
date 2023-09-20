@@ -78,7 +78,7 @@ export default function Dashboard() {
             {budgets && budgets.length > 0 ?
               (
                 <div className="grid-lg">
-                  <div className="flex lg">
+                  <div className="flex-lg">
                     <AddBudgetForm />
                     <AddExpenseForm budgets={budgets} />
                   </div>
